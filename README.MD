@@ -3,8 +3,8 @@
 ### 1. Clone Repositori
 
 ```bash
-git clone https://github.com/username/bot-pengiriman-sol.git
-cd bot-pengiriman-sol
+git clone https://github.com/Mnuralim/bot-sonic-sol.git
+cd bot-sonic-sol
 ```
 
 ### 2. Instal Dependensi
