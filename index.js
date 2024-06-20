@@ -43,6 +43,10 @@ async function getKeypairFromSeed(seedPhrase) {
   return Keypair.fromSeed(derivedSeed.slice(0, 32))
 }
 
+async function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 ;(async () => {
   const seedPhrase = process.env.SEED_PHRASE
   if (!seedPhrase) {
@@ -53,7 +57,8 @@ async function getKeypairFromSeed(seedPhrase) {
   const randomAddresses = generateRandomAddresses(100)
   console.log('Generated 100 random addresses:', randomAddresses)
 
-  const amountToSend = 0.001 //
+  const amountToSend = 0.001
+  const delayBetweenRequests = 5000
 
   for (const address of randomAddresses) {
     const toPublicKey = new PublicKey(address)
@@ -63,5 +68,6 @@ async function getKeypairFromSeed(seedPhrase) {
     } catch (error) {
       console.error(`Failed to send SOL to ${address}:`, error)
     }
+    await delay(delayBetweenRequests)
   }
 })()
